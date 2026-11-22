@@ -2,14 +2,19 @@ const express = require("express");
 const router = express.Router();
 const { toggleDevice } = require("../controllers/deviceController");
 const { createRoom, getRooms, updateRoom, deleteRoom, getRoom, updateDeviceStates, getRoomById } = require("../controllers/roomController");
-const { loginUser } = require("../controllers/authController");
+const { loginUser, registerUser, logoutUser } = require("../controllers/authController");
 const verifyToken = require("../middlewares/auth");
 const { addSwitch, updateSwitch, deleteSwitch, updateSwitchName, getSwitches, updateSwitchState } = require("../controllers/switchController");
 const {deleteBoard, createBoard, updateBoard, updateDeviceState, getBoards, getBoard, getBoardById } = require("../controllers/boardController");
 
 router.post("/toggle", toggleDevice);
 // router.post("/create",verifyToken, createRoom);
+
+// Authentication Routes
+router.post("/register", registerUser);
+router.post("/signup", registerUser);
 router.post("/login", loginUser);
+router.post("/logout", logoutUser);
 
 router.post("/create-room", verifyToken, createRoom);
 router.get("/get-rooms", verifyToken, getRooms);
