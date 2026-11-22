@@ -56,7 +56,7 @@ app.use(cors()); // This is good
 app.get("/ping", (req, res) => {
   res.status(200).json({
     status: "ok",
-    message: "Server is alive",
+    message: "Hurray! Server is alive",
     timestamp: new Date().toISOString()
   });
 });
